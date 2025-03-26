@@ -16,7 +16,7 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
         {/* Left Section (Chat Info + Email) */}
-        <div className="flex flex-col items-center space-y-6 w-full md:flex md:items-center md:justify-center">
+        <div className="flex flex-col items-center space-y-6 w-full md:flex md:items-start md:justify-center">
           <h3 className="text-2xl font-semibold text-white">
             Let's talk about your ideas.
           </h3>
@@ -35,7 +35,7 @@ const Contact = () => {
 
         {/* Right Section: Form */}
         <div className="w-full">
-          <h3 className="text-2xl font-semibold mb-4 text-white text-center md:text-left">
+          <h3 className="text-2xl font-semibold mb-4 text-white md:text-left">
             Send me a message 🚀
           </h3>
           <form className="space-y-4">
