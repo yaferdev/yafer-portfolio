@@ -8,18 +8,29 @@ import {
 } from "react-icons/fa";
 import { SiTailwindcss, SiBootstrap } from "react-icons/si";
 
+const techIcons = [
+  { icon: <FaHtml5 className="text-orange-500" />, name: "HTML5" },
+  { icon: <FaCss3Alt className="text-blue-500" />, name: "CSS3" },
+  { icon: <FaJs className="text-yellow-500" />, name: "JavaScript" },
+  { icon: <FaReact className="text-cyan-400" />, name: "React.js" },
+  { icon: <SiTailwindcss className="text-blue-400" />, name: "Tailwind CSS" },
+  { icon: <SiBootstrap className="text-purple-500" />, name: "Bootstrap" },
+  { icon: <FaPhp className="text-blue-600" />, name: "PHP" },
+  { icon: <FaDatabase className="text-green-500" />, name: "MySQL" },
+];
+
 const About = () => {
   return (
     <section
       id="about"
-      className="flex flex-col justify-center items-center min-h-screen p-6"
+      className="flex flex-col justify-center items-center min-h-screen p-4 mt-16"
     >
-      <div className="w-full max-w-4xl">
-        <h2 className="text-5xl font-extrabold mb-8 text-cyan-400 text-center uppercase">
+      <div className="w-full max-w-4xl mt-16">
+        <h2 className="text-4xl font-bold md:font-extrabold mb-8 text-transparent bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-center uppercase">
           Who’s Behind the Code?
         </h2>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+        <p className="text-gray-300 text-lg leading-relaxed mb-6 md:text-left">
           Hi, I'm <span className="font-semibold text-white">Yafer</span>, a
           passionate Web Developer with a background in IT Support. I have two
           years of experience as an IT Support Assistant at the{" "}
@@ -29,7 +40,7 @@ const About = () => {
           , where I developed strong problem-solving skills.
         </p>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-6">
+        <p className="text-gray-300 text-lg leading-relaxed mb-6 md:text-left">
           I specialize in{" "}
           <span className="text-yellow-500 font-semibold">
             HTML, CSS, JavaScript, React.js, Tailwind CSS, Bootstrap, PHP, and
@@ -39,21 +50,19 @@ const About = () => {
           focusing on building modern, user-friendly applications.
         </p>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-8">
+        <p className="text-gray-300 text-lg leading-relaxed mb-8 md:text-left">
           I’m always learning and keeping up with the latest web technologies to
           create high-quality, efficient projects.
         </p>
 
-        {/* SKILL ICONS */}
-        <div className="flex flex-wrap justify-center gap-6">
-          <FaHtml5 className="text-orange-500 text-6xl hover:scale-110 transition-transform" />
-          <FaCss3Alt className="text-blue-500 text-6xl hover:scale-110 transition-transform" />
-          <FaJs className="text-yellow-500 text-6xl hover:scale-110 transition-transform" />
-          <FaReact className="text-cyan-400 text-6xl hover:scale-110 transition-transform" />
-          <SiTailwindcss className="text-blue-400 text-6xl hover:scale-110 transition-transform" />
-          <SiBootstrap className="text-purple-500 text-6xl hover:scale-110 transition-transform" />
-          <FaPhp className="text-blue-600 text-6xl hover:scale-110 transition-transform" />
-          <FaDatabase className="text-green-500 text-6xl hover:scale-110 transition-transform" />
+        {/* STATIC SKILL ICONS GRID (NO HOVER EFFECTS) */}
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-6 justify-center items-center text-5xl md:text-6xl">
+          {techIcons.map((item, index) => (
+            <div key={index} className="flex flex-col items-center">
+              {item.icon}
+              <span className="text-sm text-gray-400 mt-2">{item.name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

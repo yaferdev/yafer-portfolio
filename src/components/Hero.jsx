@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
@@ -6,36 +7,41 @@ const Hero = () => {
       id="home"
       className="flex flex-col justify-center items-center min-h-screen p-6"
     >
-      <div className="max-w-6xl text-center">
-        <h1 className="text-6xl md:text-8xl font-extrabold mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="max-w-6xl text-center mt-16 md:text-left "
+      >
+        <h1 className="text-5xl md:text-8xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-wide drop-shadow-md">
           Yafer De Leon
         </h1>
-
-        <p className="text-2xl md:text-4xl font-medium text-cyan-400 mb-4">
+        <p className="text-xl md:text-3xl font-bold text-white text-center md:text-left mb-4">
           I'm Yafer, a{" "}
-          <Typewriter
-            words={[
-              "Web Developer",
-              "Tech Support",
-              "PC Builder",
-              "Web3 Content Creator",
-            ]}
-            loop={true}
-            cursor
-            cursorStyle="_"
-            typeSpeed={50}
-            deleteSpeed={30}
-            delaySpeed={1500}
-          />
+          <span className="text-cyan-400">
+            <Typewriter
+              words={[
+                "Web Developer",
+                "Tech Support",
+                "PC Builder",
+                "Content Creator",
+                "Airdrop Hunter",
+                "Crypto Enthusiast",
+              ]}
+              loop={true}
+              cursor
+              cursorStyle="[]"
+              typeSpeed={50}
+              deleteSpeed={30}
+              delaySpeed={1200}
+            />
+          </span>
         </p>
 
-        <button
-          type="button"
-          className="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-6 py-3.5 text-center me-2 transition-all duration-200"
-        >
+        <button className="px-6 py-3 text-lg font-semibold text-white bg-gradient-to-br from-purple-600 to-blue-500 rounded-full shadow-md hover:shadow-purple-600/50 hover:shadow-lg transition-all duration-200 ease-in-out">
           Download Resume
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 };
