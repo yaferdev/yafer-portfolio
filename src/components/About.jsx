@@ -7,6 +7,7 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 import { SiTailwindcss, SiBootstrap } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const techIcons = [
   { icon: <FaHtml5 className="text-orange-500" />, name: "HTML5" },
@@ -25,7 +26,12 @@ const About = () => {
       id="about"
       className="flex flex-col justify-center items-center min-h-screen p-4 mt-16"
     >
-      <div className="w-full max-w-4xl mt-16">
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="max-w-6xl text-center mt-16 md:text-left"
+      >
         <h2 className="text-4xl font-bold md:font-extrabold mb-8 text-transparent bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-center uppercase">
           Who’s Behind the Code?
         </h2>
@@ -64,7 +70,7 @@ const About = () => {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
