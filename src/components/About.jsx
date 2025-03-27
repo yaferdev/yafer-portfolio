@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -7,7 +9,6 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 import { SiTailwindcss, SiBootstrap } from "react-icons/si";
-import { motion } from "framer-motion";
 
 const techIcons = [
   { icon: <FaHtml5 className="text-orange-500" />, name: "HTML5" },
@@ -27,49 +28,70 @@ const About = () => {
       className="flex flex-col justify-center items-center min-h-screen p-4 mt-16"
     >
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.3 }} // Delay per child animation
         className="max-w-6xl text-center mt-16 md:text-left"
       >
-        <h2 className="text-4xl font-bold md:font-extrabold mb-8 text-transparent bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-center uppercase">
+        {/* TITLE */}
+        <motion.h2
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl font-bold md:font-extrabold mb-8 text-transparent bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-center uppercase"
+        >
           Who’s Behind the Code?
-        </h2>
+        </motion.h2>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-6 md:text-left">
-          Hi, I'm <span className="font-semibold text-white">Yafer</span>, a
-          passionate Web Developer with a background in IT Support. I have two
-          years of experience as an IT Support Assistant at the{" "}
-          <span className="text-white font-semibold">
-            Manila International Airport Authority
-          </span>
-          , where I developed strong problem-solving skills.
-        </p>
+        {/* TEXT PARAGRAPHS */}
+        {[
+          "Hi, I'm Yafer, a passionate Web Developer with a background in IT Support. I have two years of experience as an IT Support Assistant at the Manila International Airport Authority, where I developed strong problem-solving skills.",
+          "I specialize in HTML, CSS, JavaScript, React.js, Tailwind CSS, Bootstrap, PHP, and MySQL. My goal is to transition into a full-time Web Developer role, focusing on building modern, user-friendly applications.",
+          "I’m always learning and keeping up with the latest web technologies to create high-quality, efficient projects.",
+        ].map((text, index) => (
+          <motion.p
+            key={index}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+            className="text-gray-300 text-lg leading-relaxed mb-6 md:text-left"
+          >
+            {text}
+          </motion.p>
+        ))}
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-6 md:text-left">
-          I specialize in{" "}
-          <span className="text-yellow-500 font-semibold">
-            HTML, CSS, JavaScript, React.js, Tailwind CSS, Bootstrap, PHP, and
-            MySQL
-          </span>
-          . My goal is to transition into a full-time Web Developer role,
-          focusing on building modern, user-friendly applications.
-        </p>
-
-        <p className="text-gray-300 text-lg leading-relaxed mb-8 md:text-left">
-          I’m always learning and keeping up with the latest web technologies to
-          create high-quality, efficient projects.
-        </p>
-
-        {/* STATIC SKILL ICONS GRID (NO HOVER EFFECTS) */}
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-6 justify-center items-center text-5xl md:text-6xl">
+        {/* SKILL ICONS (STAGGERED) */}
+        <motion.div
+          className="grid grid-cols-4 md:grid-cols-8 gap-6 justify-center items-center text-5xl md:text-6xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ staggerChildren: 0.2 }} // Staggered effect for icons
+        >
           {techIcons.map((item, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <motion.div
+              key={index}
+              variants={{
+                hidden: { opacity: 0, scale: 0.5 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.1,
+              }}
+              className="flex flex-col items-center"
+            >
               {item.icon}
               <span className="text-sm text-gray-400 mt-2">{item.name}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
